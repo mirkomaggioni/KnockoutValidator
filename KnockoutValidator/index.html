@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8" />
+
+  <script type="text/javascript" src="scripts/jquery-3.1.1.js"></script>
+  <script type="text/javascript" src="scripts/knockout-3.4.0.js"></script>
+  <script type="text/javascript" src="scripts/viewModel.js"></script>
+  <script type="text/javascript" src="scripts/customBinding.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      var vm = new ViewModel();
+      ko.applyBindings(vm);
+    });
+  </script>
+</head>
+<body>
+  <div>
+    <label>First name</label>
+    <input type="text" id="firstName" data-bind="value: FirstName, isValid: FirstName, onSubmit: OnSubmit, errorLabel: 'firstNameError', callBack: SendData" />
+    <label id="firstNameError" class="error">Mandatory!</label>
+  </div>
+  <div>
+    <label>Last name</label>
+    <input type="text" id="lastName" data-bind="value: LastName, isValid: LastName, onSubmit: OnSubmit, errorLabel: 'lastNameError', callBack: SendData" />
+    <label id="lastNameError" class="error">Mandatory!</label>
+  </div>
+  <div>
+    <input type="button" data-bind="click: Submit" value="submit" />
+  </div>
+  <div>
+    <label data-bind="visible: OnSendData">Send Data!</label>
+  </div>
+</body>
+</html>
